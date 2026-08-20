@@ -3,21 +3,18 @@
 ## Overview
 This document outlines the core technical architecture and the specific design and animation ideologies that power the Capitova Bio Systems web platform.
 
-## Design and Animation Ideology
+## The "Engineering Life, Atom by Atom" Experience
 
-The visual language of Capitova is intentionally crafted to break away from traditional corporate biotech websites, aiming instead for an experience that feels like specialized laboratory software. 
+The core thesis of Capitova—"Engineering Life, Atom by Atom"—is not just a tagline; it is the central organizing principle for the landing page's design and scroll choreography. We utilized a layered approach to animation to immerse the user in this concept from the moment they arrive:
 
-### 1. The "Lab-Night" Aesthetic
-Capitova employs a dark, highly contrasted visual language we refer to as the "Lab-Night" aesthetic. Instead of generic blacks or grays, the color palette is anchored in deep, clinical purples and blues (`oklch(0.16 0.028 265)`), juxtaposed with highly saturated, luminous accent colors like amber, gold, and lilac. This creates a mood that is both strictly scientific and intensely modern—evoking glowing analytical readouts in a sterile, low-light laboratory environment.
+### 1. Parallax and Scroll-Linked Storytelling
+As the user scrolls down the page, they don't just read static content; they scrub through time. By leveraging Framer Motion's `useScroll` and `useTransform` hooks tied to the `Lenis` smooth-scrolling engine, elements like the Hero text, microscopy backgrounds, and biological stages physically respond to the user's scroll depth. This creates a tactile relationship where scrolling feels like navigating down into the microscopic level.
 
-### 2. Biological Fluidity Meets Mathematical Precision
-The motion design across the platform is deliberately calculated to mimic biological processes—such as drifting cells, unfolding proteins, or steady fluid flow. However, we avoid chaotic or randomized movement. All animations (powered by Framer Motion and custom CSS keyframes) utilize strict easing curves. Our primary easing function (`cubic-bezier(0.16, 1, 0.3, 1)`) ensures that elements snap into place rapidly but settle with a long, smooth tail, conveying a sense of highly engineered precision.
+### 2. The Hero Orbit and Data Overlays
+At the very top of the page, the Hero Orbit component sets the stage by featuring continuous, infinite rotational animations (representing DNA rings, cellular structures, and processing cycles). We pair these organic, slow-drifting visual assets with rapid, highly-technical overlays (like the live 0.0004ms processing counter and scrolling ATGC sequences). This juxtaposition visually defines Capitova: the messy complexity of biology constrained by the raw, predictable power of high-speed computation.
 
-### 3. Native "App-Like" Micro-Interactions
-To elevate the user experience from a static marketing site to an interactive platform, Capitova leans heavily on shared element transitions (Layout Animations) and context-aware interactions. When users interact with components—such as expanding a capability card into the full-screen modal or opening the navigation overlay—elements do not simply "fade in". They seamlessly morph, scale, and crossfade continuously from their point of origin. This creates an unbroken spatial model in the user's mind, making the web experience feel like a premium native desktop application.
-
-### 4. Data-Driven UI Elements
-Scientific claims must be backed by data. To reflect this core tenet in the UI, dynamic data visualizations (such as the React `Sparkline` and `RadialGauge` components) are integrated directly alongside marketing copy. These visualizations are animated on scroll and tied directly to the viewport, reinforcing the message that Capitova's underlying technology is active, quantifiable, and continuously running.
+### 3. Canvas-Based Interactive Physics
+To truly sell the "Atom by Atom" concept, we integrated a custom, interactive `MolecularField` canvas in the background. Unlike CSS animations, this HTML5 Canvas implementation handles hundreds of individual drifting particles (atoms/molecules) that dynamically bond and react to the user's mouse cursor as a repulsive field. This interactive physics simulation reinforces the idea that life at the atomic scale is a manipulatable, computable medium.
 
 ---
 
